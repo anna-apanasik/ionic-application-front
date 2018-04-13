@@ -1,0 +1,20 @@
+<ion-card>
+  <ion-card-header> <strong> {{ note.title }} </strong> </ion-card-header>
+
+  <ion-card-content> {{ note.text }} </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="editNote(note)">
+        <ion-icon name="create"></ion-icon>
+        <div>Edit</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="removeNote(note)">
+        <ion-icon name="close"></ion-icon>
+        <div>Remove</div>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-card>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar
+            [(ngModel)]="searchValue"
+            [showCancelButton]="true"
+            (ionInput)="onInput()"
+            (ionCancel)="onCancel()">
+    </ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="searchedNotes && searchedNotes.length > 0" >
+    <ion-list *ngFor="let note of searchedNotes">
+      <view-note [note]="note"></view-note>
+    </ion-list>
+  </ion-item>
+
+  <ion-item *ngIf="!searchedNotes || searchedNotes.length == 0">
+    <ion-note text text-center>
+      Start searching...
+    </ion-note>
+  </ion-item>
+</ion-content>
