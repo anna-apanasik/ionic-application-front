@@ -24,6 +24,7 @@ import { NoteProvider } from '../providers/note/note-provider';
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { CreateNotificationModalPage } from "../pages/create-notification-modal/create-notification-modal";
 import {CommonSettingsPage} from "../pages/common-settings/common-settings";
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
@@ -46,6 +47,9 @@ import {CommonSettingsPage} from "../pages/common-settings/common-settings";
     IonicModule.forRoot(MyApp),
       ComponentsModule,
       ionicGalleryModal.GalleryModalModule,
+      AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyA_sqCdrDJW29BxI3UwvGPfX3fohvCvykE'
+      })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

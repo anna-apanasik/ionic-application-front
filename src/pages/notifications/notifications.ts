@@ -16,13 +16,15 @@ export class NotificationsPage {
               private modalCtrl: ModalController,
               private platform: Platform,
               private alertCtrl: AlertController) {
+  }
 
+  ionViewDidLoad() {
       this.platform.ready()
           .then(() => {
-             this.localNotifications.hasPermission()
-                 .then((hasPermission) => {
-                     if(!hasPermission) {
-                          this.alertCtrl.create({
+              this.localNotifications.hasPermission()
+                  .then((hasPermission) => {
+                      if(!hasPermission) {
+                          let alertIns = this.alertCtrl.create({
                               title: 'Notifications',
                               message: 'Allow notifications?',
                               buttons: [
@@ -36,18 +38,18 @@ export class NotificationsPage {
                                       text: 'Allow',
                                       handler: () => {
                                           this.localNotifications.requestPermission()
-                                              .then(() => {})
+                                              .then((res) => alert(res))
                                       }
                                   }
                               ]
                           });
-                     } else {
-                         alert('ect\' y men9 ');
-                     }
-                 });
+                          alertIns.present();
+                      } else {
+                          alert('ect\' y men9 ');
+                      }
+                  });
           });
-  }
-
+    }
   createNotification() {
       this.platform.ready()
           .then(() => {
