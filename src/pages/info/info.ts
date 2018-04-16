@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
+import {GalleryModal} from "ionic-gallery-modal";
 
 /**
  * Generated class for the InfoPage page.
@@ -17,7 +18,8 @@ export class InfoPage {
   slides = [
       {
           title: "Welcome to the Docs!",
-          description: "The Ionic Component Documentation showcases a number of useful components that are included out of the box with Ionic."
+          description: "The Ionic Component Documentation showcases a number of useful components that are included out of the box with Ionic.",
+          button: "Show images"
       },
       {
           title: "What is Ionic?",
@@ -29,7 +31,24 @@ export class InfoPage {
       }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private images: any[] = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
+      for (let i = 1; i < 5; i++) {
+          this.images.push({
+              url: `assets/imgs/${i}.jpg`
+          });
+      }
+  }
+
+  showImages() {
+      let imageModal = this.modalCtrl.create(GalleryModal, {
+          photos: this.images,
+          initialSlide: 0,
+          closeIcon: 'arrow-back'
+      });
+
+      imageModal.present();
   }
 
 }

@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 
+import * as ionicGalleryModal from 'ionic-gallery-modal';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login'
@@ -20,6 +23,7 @@ import { ComponentsModule } from "../components/components.module";
 import { NoteProvider } from '../providers/note/note-provider';
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { CreateNotificationModalPage } from "../pages/create-notification-modal/create-notification-modal";
+import {CommonSettingsPage} from "../pages/common-settings/common-settings";
 
 
 @NgModule({
@@ -34,12 +38,14 @@ import { CreateNotificationModalPage } from "../pages/create-notification-modal/
       CreateNoteModalPage,
       SearchPage,
       NotificationsPage,
-      CreateNotificationModalPage
+      CreateNotificationModalPage,
+      CommonSettingsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-      ComponentsModule
+      ComponentsModule,
+      ionicGalleryModal.GalleryModalModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,14 +59,19 @@ import { CreateNotificationModalPage } from "../pages/create-notification-modal/
       CreateNoteModalPage,
       SearchPage,
       NotificationsPage,
-      CreateNotificationModalPage
+      CreateNotificationModalPage,
+      CommonSettingsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NoteProvider,
-      LocalNotifications
+      LocalNotifications,
+      {
+          provide: HAMMER_GESTURE_CONFIG,
+          useClass: ionicGalleryModal.GalleryModalHammerConfig,
+      }
   ]
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {NotificationsPage} from "../notifications/notifications";
 
 /**
  * Generated class for the SettingsPage page.
@@ -49,7 +50,7 @@ export class SettingsPage {
           'title': 'Notifications',
           'icon': 'notifications',
           'description': 'Setting for notifications',
-          'page': ''
+          'page': NotificationsPage
       }
   ];
 

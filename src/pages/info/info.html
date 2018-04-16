@@ -12,6 +12,9 @@
     <ion-slide *ngFor="let slide of slides">
       <h2>{{ slide.title }}</h2>
        {{ slide.description }}
+      <div *ngIf="slide.button">
+        <button ion-button (click)="showImages()" round>{{ slide.button }}</button>
+      </div>
     </ion-slide>
   </ion-slides>
 </ion-content>

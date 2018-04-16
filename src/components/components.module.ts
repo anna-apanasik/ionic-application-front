@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { ViewNoteComponent } from './view-note/view-note';
 import {IonicModule} from "ionic-angular";
 @NgModule({
-	declarations: [ViewNoteComponent],
+	declarations: [
+		ViewNoteComponent,
+	],
 	imports: [IonicModule],
-	exports: [ViewNoteComponent]
+	exports: [
+		ViewNoteComponent,
+	]
 })
 export class ComponentsModule {}

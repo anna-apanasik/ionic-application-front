@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import {AlertController, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {ILocalNotification, LocalNotifications} from "@ionic-native/local-notifications";
 import {CreateNotificationModalPage} from "../create-notification-modal/create-notification-modal";
-
-/**
- * Generated class for the NotificationsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Notification} from "../../models/Notification";
 
 @Component({
   selector: 'page-notifications',
@@ -23,21 +17,35 @@ export class NotificationsPage {
               private platform: Platform,
               private alertCtrl: AlertController) {
 
-      // this.platform.ready()
-      //     .then(() => {
-      //         console.log('ready then')
-      //         this.localNotifications.on('click')
-      //             .subscribe(notification => {
-      //                 console.log('subsr')
-      //                 let json = JSON.parse(notification.data);
-      //
-      //                 let alert = this.alertCtrl.create({
-      //                     title: notification.title,
-      //                     subTitle: json.mydata
-      //                 });
-      //                 alert.present();
-      //             })
-      //     })
+      this.platform.ready()
+          .then(() => {
+             this.localNotifications.hasPermission()
+                 .then((hasPermission) => {
+                     if(!hasPermission) {
+                          this.alertCtrl.create({
+                              title: 'Notifications',
+                              message: 'Allow notifications?',
+                              buttons: [
+                                  {
+                                      text: 'Cancel',
+                                      role: 'cancel',
+                                      handler: () => {
+                                      }
+                                  },
+                                  {
+                                      text: 'Allow',
+                                      handler: () => {
+                                          this.localNotifications.requestPermission()
+                                              .then(() => {})
+                                      }
+                                  }
+                              ]
+                          });
+                     } else {
+                         alert('ect\' y men9 ');
+                     }
+                 });
+          });
   }
 
   createNotification() {
@@ -45,33 +53,14 @@ export class NotificationsPage {
           .then(() => {
               let createNoteModal = this.modalCtrl.create(CreateNotificationModalPage);
               createNoteModal.present();
-              createNoteModal.onDidDismiss((data: ILocalNotification) => {
-                  // this.localNotifications.schedule({
-                  //     id: data.id,
-                  //     title: data.title,
-                  //     text: data.text,
-                  //     trigger: {at: data.trigger.at}
-                  // });
-                  this.localNotifications.schedule(data);
+              createNoteModal.onDidDismiss((data: Notification) => {
+                  // this.localNotifications.schedule(data);
+                  this.localNotifications.schedule({
+                      id: 1,
+                      title: 'Hi',
+                      text: 'how is it going?'
+                  })
               });
-          });
-
-
-      // let createNoteModal = this.modalCtrl.create(CreateNotificationModalPage);
-      // createNoteModal.present();
-      // createNoteModal.onDidDismiss(data => {
-      //   console.log(data)
-      //     // if(data) {
-      //     //   console.log('data in create')
-      //         this.localNotifications.schedule({
-      //             id: 1,
-      //             title: 'Attention',
-      //             text: 'Simons Notification'
-      //         });
-      //     // }
-      // });
+          })
   }
 }
-
-
-// trigger: {at: new Date(new Date().getTime() + 5000)}

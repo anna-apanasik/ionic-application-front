@@ -5,19 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Notifications</ion-title>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="createNotification()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
+<!--<ion-item *ngIf="notifications && notifications.length > 0" >-->
+  <!--zdfdsaczd-->
+  <!--<ion-list *ngFor="let notification of notifications">-->
+    <!--<view-notification [notification]="notification"></view-notification>-->
+  <!--</ion-list>-->
+<!--</ion-item>-->
+
+<!--<ion-item *ngIf="!notifications || notifications.length == 0">-->
+  <!--<ion-note text text-center>-->
+    <!--You didn't create notifications...-->
+  <!--</ion-note>-->
+<!--</ion-item>-->
 
 <ion-content padding>
-
+  <button ion-button icon-only [block] (click)="createNotification()" round>
+    <ion-icon name="add">Add</ion-icon>
+  </button>
 </ion-content>
