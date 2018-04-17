@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { LocalNotifications } from "@ionic-native/local-notifications";
+import {Geolocation} from "@ionic-native/geolocation";
 
 import * as ionicGalleryModal from 'ionic-gallery-modal';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
@@ -75,10 +76,12 @@ import {MapPage} from "../pages/map/map";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NoteProvider,
       LocalNotifications,
+      Geolocation,
       {
           provide: HAMMER_GESTURE_CONFIG,
           useClass: ionicGalleryModal.GalleryModalHammerConfig,
-      }
+      },
+
   ]
 })
 export class AppModule {}

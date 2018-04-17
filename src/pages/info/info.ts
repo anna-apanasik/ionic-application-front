@@ -8,9 +8,6 @@ import {GalleryModal} from "ionic-gallery-modal";
 })
 export class InfoPage {
 
-    lat: number = 53.928519;
-    lng: number = 27.625983;
-
   slides = [
       {
           title: "Welcome to the Docs!",
