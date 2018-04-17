@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import {DateTime, NavController, NavParams, ViewController} from 'ionic-angular';
 import {Note} from "../../models/Note";
 
-/**
- * Generated class for the CreateNoticeModalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-create-note-modal',
   templateUrl: 'create-note-modal.html',

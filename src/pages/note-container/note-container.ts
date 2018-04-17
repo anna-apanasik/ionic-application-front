@@ -4,13 +4,6 @@ import {CreateNoteModalPage} from "../create-note-modal/create-note-modal";
 import {NoteProvider} from "../../providers/note/note-provider";
 import {Note} from "../../models/Note";
 
-/**
- * Generated class for the notePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-note',
   templateUrl: 'note-container.html'

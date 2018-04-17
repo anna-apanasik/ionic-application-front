@@ -5,14 +5,7 @@ import {InfoPage} from "../info/info";
 import {SettingsPage} from "../settings/settings";
 import {NoteContainerPage} from "../note-container/note-container";
 import {SearchPage} from "../search/search";
-import {NotificationsPage} from "../notifications/notifications";
-
-/**
- * Generated class for the TabsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-tabs',
@@ -25,7 +18,7 @@ export class TabsPage {
       infoPage: InfoPage,
       settings: SettingsPage,
       notices: NoteContainerPage,
-      notifications: NotificationsPage
+      map: MapPage
   };
 
   home: any = HomePage;

@@ -10,7 +10,6 @@ export class NotificationHelper {
             id: Math.round(Math.random() * 10000),
             title: notification.title,
             text: notification.text,
-            data: notification.message,
             trigger: {
                 at: new Date(new Date(notification.time).getTime())
             }

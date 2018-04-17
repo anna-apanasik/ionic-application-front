@@ -25,6 +25,7 @@ import { NotificationsPage } from "../pages/notifications/notifications";
 import { CreateNotificationModalPage } from "../pages/create-notification-modal/create-notification-modal";
 import {CommonSettingsPage} from "../pages/common-settings/common-settings";
 import {AgmCoreModule} from "@agm/core";
+import {MapPage} from "../pages/map/map";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {AgmCoreModule} from "@agm/core";
       SearchPage,
       NotificationsPage,
       CreateNotificationModalPage,
-      CommonSettingsPage
+      CommonSettingsPage,
+      MapPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import {AgmCoreModule} from "@agm/core";
       SearchPage,
       NotificationsPage,
       CreateNotificationModalPage,
-      CommonSettingsPage
+      CommonSettingsPage,
+      MapPage
   ],
   providers: [
     StatusBar,

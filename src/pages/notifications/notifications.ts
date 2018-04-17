@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AlertController, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
-import {ILocalNotification, LocalNotifications} from "@ionic-native/local-notifications";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 import {CreateNotificationModalPage} from "../create-notification-modal/create-notification-modal";
 import {Notification} from "../../models/Notification";
 
@@ -56,12 +56,12 @@ export class NotificationsPage {
               let createNoteModal = this.modalCtrl.create(CreateNotificationModalPage);
               createNoteModal.present();
               createNoteModal.onDidDismiss((data: Notification) => {
-                  // this.localNotifications.schedule(data);
-                  this.localNotifications.schedule({
-                      id: 1,
-                      title: 'Hi',
-                      text: 'how is it going?'
-                  })
+                  this.localNotifications.schedule(data);
+                  // this.localNotifications.schedule({
+                  //     id: 1,
+                  //     title: 'Hi',
+                  //     text: 'how is it going?'
+                  // })
               });
           })
   }

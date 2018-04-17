@@ -17,7 +17,9 @@ export class Notification implements ILocalNotification {
         this.time = new Date().toISOString();
     }
 
-    prepare() {
-        this.trigger.at = new Date(new Date(this.time).getTime());
+     static prepare(notification: Notification) {
+        notification.trigger= { at: new Date(new Date(notification.time).getTime()) };
+        return notification;
+
     }
 }

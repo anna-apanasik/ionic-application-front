@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController} from 'ionic-angular';
 import {Notification} from "../../models/Notification";
-import {NotificationHelper} from "../../helpers/NotificationHelper";
 
 @Component({
   selector: 'page-create-notification-modal',
@@ -18,6 +17,6 @@ export class CreateNotificationModalPage {
   }
 
   save(): void {
-      this.viewCtrl.dismiss(NotificationHelper.convertNotificationToILocalNotification(this.notification));
+      this.viewCtrl.dismiss(Notification.prepare(this.notification));
   }
 }
