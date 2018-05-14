@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hi, dear
+    </ion-title>
+  </ion-navbar>
+
+ <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="startSegment">
+      <ion-segment-button value="login">
+        Log in
+      </ion-segment-button>
+      <ion-segment-button value="register">
+        Sign up
+      </ion-segment-button>
+
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="startSegment">
+    <ion-list *ngSwitchCase="'login'">
+      <login-component></login-component>
+    </ion-list>
+    
+    <ion-list *ngSwitchCase="'register'">
+      <register-component></register-component>
+    </ion-list>
+    
+  </div>
+</ion-content>

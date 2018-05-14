@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {HomePage} from "../home/home";
 import {InfoPage} from "../info/info";
 import {SettingsPage} from "../settings/settings";
 import {NoteContainerPage} from "../note-container/note-container";
@@ -21,7 +20,6 @@ export class TabsPage {
       map: MapPage
   };
 
-  home: any = HomePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

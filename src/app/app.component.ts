@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StartPage } from "../pages/start/start";
 
-import { HomePage } from '../pages/home/home';
-import {TabsPage} from "../pages/tabs/tabs";
-import {LocalNotifications} from "@ionic-native/local-notifications";
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage: any = StartPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

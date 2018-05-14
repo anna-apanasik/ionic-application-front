@@ -1,0 +1,118 @@
+<form #registerForm="ngForm" novalidate>
+  <ion-list [ngClass]="{'platform-ios': isIos }">
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email"
+                 email
+                 name="email"
+                 [(ngModel)]="user.email"
+                 #email="ngModel"
+                 required
+                 clearInput></ion-input>
+    </ion-item>
+
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email && !email.errors.required">
+        Email not valid.
+      </div>
+    </div>
+
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"
+                 name="password"
+                 [(ngModel)]="user.password"
+                 #password="ngModel"
+                 pattern="^[A-Za-z0-9\-_!@#$%^&*()]+$"
+                 minlength="4"
+                 maxlength="20"
+                 required
+                 clearInput></ion-input>
+    </ion-item>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors.minlength && !password.errors.required">
+        Password must be at least 8 characters long.
+      </div>
+      <div *ngIf="password.errors.maxlength && !password.errors.required">
+        Password must be no more 20 characters long.
+      </div>
+      <div *ngIf="password.errors.pattern && !password.errors.required">
+        Password not valid. You can use only English letter and this characters: \-_!@#$%^&*().
+      </div>
+      <div *ngIf="!isValidConfirmPassword() && !password.errors.required">
+        Password and confirm password don't match.
+      </div>
+    </div>
+
+    <ion-item [ngClass]="{'password-touched': password.touched && !isValidConfirmPassword()}">
+      <ion-label floating>Confirm password</ion-label>
+      <ion-input type="password"
+                 name="confirmPasswordField"
+                 [(ngModel)]="confirmPassword"
+                 #confirmPasswordField="ngModel"
+                 pattern="^[A-Za-z0-9\-_!@#$%^&*()]+$"
+                 minlength="4"
+                 maxlength="20"
+                 required
+                 clearInput></ion-input>
+    </ion-item>
+
+    <div *ngIf="confirmPasswordField.invalid && (confirmPasswordField.dirty || confirmPasswordField.touched || password.touched)" class="error-message">
+      <div *ngIf="confirmPasswordField.errors.required">
+        Confirm password is required.
+      </div>
+      <div *ngIf="confirmPasswordField.errors.minlength && !confirmPasswordField.errors.required">
+        Confirm password must be at least 8 characters long.
+      </div>
+      <div *ngIf="confirmPasswordField.errors.maxlength && !confirmPasswordField.errors.required">
+        Confirm password must be no more 20 characters long.
+      </div>
+      <div *ngIf="confirmPasswordField.errors.pattern && !confirmPasswordField.errors.required">
+        Confirm password not valid. You can use only English letter and this characters: \-_!@#$%^&*().
+      </div>
+      <div *ngIf="(!isValidConfirmPassword() && !confirmPasswordField.errors.required) ||
+                  (!isValidConfirmPassword() && !confirmPasswordField.errors.required && password.touched)">
+        Password and confirm password don't match.
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label floating>First name</ion-label>
+      <ion-input type="text"
+                 name="firstName"
+                 [(ngModel)]="user.firstName"
+                 clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Middle name</ion-label>
+      <ion-input type="text"
+                 name="middleName"
+                 [(ngModel)]="user.middleName"
+                 clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Last name</ion-label>
+      <ion-input type="text"
+                 name="lastName"
+                 [(ngModel)]="user.lastName"
+                 clearInput></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button round
+          color="primary"
+          class="register-button"
+
+          (click)="register()"> Sign Up </button>
+</form>
+<!--[disabled]="email.untouched || password.untouched || confirmPasswordField.untouched ||-->
+<!--email.invalid || password.invalid || confirmPasswordField.invalid"-->

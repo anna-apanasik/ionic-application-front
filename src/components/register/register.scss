@@ -1,0 +1,38 @@
+register-component {
+  .platform-ios {
+    & ion-item {
+      &.ng-valid.ng-touched {
+        border-bottom: 1.5px solid #00d80d !important;
+        .item-inner {
+          border-bottom: 0 none transparent !important;
+        }
+      }
+
+      &.ng-invalid:not(form) {
+        border-bottom: 1.5px solid #f53d3d;
+        .item-inner {
+          border-bottom: 0 none transparent !important;
+        }
+      }
+
+    }
+    .password-touched {
+      border-bottom: 1.5px solid #f53d3d;
+      .item-inner {
+        border-bottom: 0 none transparent !important;
+      }
+    }
+  }
+  
+  .register-button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .error-message {
+    color: #f53d3d;
+    margin-left: 16px;
+    margin-top: 5px;
+  }
+}
+
