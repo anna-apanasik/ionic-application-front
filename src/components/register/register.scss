@@ -1,7 +1,7 @@
 register-component {
   .platform-ios {
     & ion-item {
-      &.ng-valid.ng-touched {
+      &.ng-valid.ng-touched:not(.password-touched) {
         border-bottom: 1.5px solid #00d80d !important;
         .item-inner {
           border-bottom: 0 none transparent !important;
@@ -23,7 +23,17 @@ register-component {
       }
     }
   }
-  
+
+  .platform-android {
+    .password-touched {
+      .item-inner {
+        border-bottom-color: #f53d3d !important;
+        -webkit-box-shadow: inset 0 -1px 0 0 #f53d3d !important;
+        box-shadow: inset 0 -1px 0 0 #f53d3d !important;
+      }
+    }
+  }
+
   .register-button {
     margin: 0 auto;
     display: block;

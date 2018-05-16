@@ -1,22 +1,23 @@
-import {Component} from '@angular/core';
-import {User} from "../../models/User";
-import {UserProvider} from "../../providers/user/user-provider";
-import {AlertController, Platform} from "ionic-angular";
-import {HttpErrorResponse} from "@angular/common/http";
+import { Component } from '@angular/core';
+import { User } from "../../models/User";
+import { UserProvider } from "../../providers/user/user-provider";
+import { AlertController, Platform } from "ionic-angular";
 
 @Component({
     selector: 'register-component',
     templateUrl: 'register.html'
 })
+
 export class RegisterComponent {
 
     protected user: User = new User();
     protected confirmPassword: string = '';
     protected isIos: boolean;
+    protected isAndroid: boolean;
 
     constructor(private platform: Platform, private userProvider: UserProvider, private alertCtrl: AlertController) {
         this.isIos = platform.is('ios');
-        console.log(this.user)
+        this.isAndroid = platform.is('android');
     }
 
     register() {
