@@ -10,7 +10,7 @@ import { LocalNotifications } from "@ionic-native/local-notifications";
 import { Geolocation } from "@ionic-native/geolocation";
 
 // Modules
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { AgmCoreModule } from "@agm/core";
 
 import * as ionicGalleryModal from 'ionic-gallery-modal';
@@ -36,9 +36,11 @@ import { CreateNoteModalPage } from "../pages/create-note-modal/create-note-moda
 import { NoteProvider } from '../providers/note/note-provider';
 import { CoreProvider } from '../providers/core/core-provider';
 import { UserProvider } from '../providers/user/user-provider';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
-// Components
+// Components and other providers
 import { ComponentsModule } from "../components/components.module";
+import { httpInterceptorProviders } from "../interceptors/interceptors";
 
 
 @NgModule({
@@ -98,6 +100,8 @@ import { ComponentsModule } from "../components/components.module";
         },
       CoreProvider,
       UserProvider,
+      AuthenticationProvider,
+      httpInterceptorProviders
   ]
 })
 export class AppModule {}

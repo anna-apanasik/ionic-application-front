@@ -16,8 +16,10 @@ export class RegisterComponent {
     protected isAndroid: boolean;
 
     constructor(private platform: Platform, private userProvider: UserProvider, private alertCtrl: AlertController) {
-        this.isIos = platform.is('ios');
-        this.isAndroid = platform.is('android');
+        platform.ready().then(() => {
+            this.isIos = platform.is('ios');
+            this.isAndroid = platform.is('android');
+        });
     }
 
     register() {

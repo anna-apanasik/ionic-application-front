@@ -1,0 +1,53 @@
+<form #loginForm="ngForm" novalidate>
+    <ion-list [ngClass]="{'platform-ios': isIos, 'platform-android': isAndroid}">
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text"
+                       email
+                       name="emailField"
+                       [(ngModel)]="email"
+                       #emailField="ngModel"
+                       required
+                       clearInput></ion-input>
+        </ion-item>
+        <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="error-message">
+            <div *ngIf="emailField.errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="emailField.errors.email && !emailField.errors.required">
+                Email not valid.
+            </div>
+        </div>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password"
+                       name="passwordField"
+                       [(ngModel)]="password"
+                       #passwordField="ngModel"
+                       pattern="^[A-Za-z0-9\-_!@#$%^&*()]+$"
+                       minlength="4"
+                       maxlength="20"
+                       required
+                       clearInput></ion-input>
+        </ion-item>
+        <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="error-message">
+            <div *ngIf="passwordField.errors?.required">
+                Password is required.
+            </div>
+            <div *ngIf="passwordField.errors?.minlength && !passwordField.errors?.required">
+                Password must be at least 4 characters long.
+            </div>
+            <div *ngIf="passwordField.errors?.pattern && !passwordField.errors?.required">
+                Password not valid. You can use only English letter and this characters: \-_!@#$%^&*().
+            </div>
+        </div>
+    </ion-list>
+
+    <button ion-button round
+            (click)="login()"
+            color="primary"
+            class="login-button"
+            [disabled]="emailField.untouched || passwordField.untouched ||
+                        emailField.invalid || passwordField.invalid">Login</button>
+</form>

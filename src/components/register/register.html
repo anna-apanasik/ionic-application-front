@@ -38,10 +38,7 @@
         Password is required.
       </div>
       <div *ngIf="password.errors?.minlength && !password.errors?.required">
-        Password must be at least 8 characters long.
-      </div>
-      <div *ngIf="password.errors?.maxlength && !password.errors?.required">
-        Password must be no more 20 characters long.
+        Password must be at least 4 characters long.
       </div>
       <div *ngIf="password.errors?.pattern && !password.errors?.required">
         Password not valid. You can use only English letter and this characters: \-_!@#$%^&*().
@@ -69,10 +66,7 @@
         Confirm password is required.
       </div>
       <div *ngIf="confirmPasswordField.errors?.minlength && !confirmPasswordField.errors?.required">
-        Confirm password must be at least 8 characters long.
-      </div>
-      <div *ngIf="confirmPasswordField.errors?.maxlength && !confirmPasswordField.errors?.required">
-        Confirm password must be no more 20 characters long.
+        Confirm password must be at least 4 characters long.
       </div>
       <div *ngIf="confirmPasswordField.errors?.pattern && !confirmPasswordField.errors?.required">
         Confirm password not valid. You can use only English letter and this characters: \-_!@#$%^&*().
