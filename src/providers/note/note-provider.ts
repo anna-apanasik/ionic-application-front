@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Note} from "../../models/Note";
+import { Note } from "../../models/Note";
+import { CoreProvider } from "../core/core-provider";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
-export class NoteProvider {
+export class NoteProvider extends CoreProvider {
 
   private notes: Note[] = [];
 
-  constructor() {
+  constructor(public http: HttpClient) {
+     super(http);
   }
 
-  addNote(note: Note): void {
-    this.notes.unshift(note);
+  addNote(note: Note) {
+    return this.postRequest('/notes/add-note', note, Note);
   }
 
   editNote(note: Note): void {
@@ -23,8 +26,8 @@ export class NoteProvider {
     this.notes.splice(index, 1);
   }
 
-  getAllNotes(): Note[] {
-    return this.notes;
+  getAllNotes() {
+    return this.getRequest('/notes', Note);
   }
 
   search(text: string): Note[] {

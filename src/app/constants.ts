@@ -5,5 +5,5 @@ export const userConstants = {
 
 export const NoTokenURL = {
     login: '/api/login',
-    register: '/api/register'
+    register: '/api/users/register'
 };

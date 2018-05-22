@@ -41,6 +41,7 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 // Components and other providers
 import { ComponentsModule } from "../components/components.module";
 import { httpInterceptorProviders } from "../interceptors/interceptors";
+import { helperProviders } from "../helpers/helperProviders";
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { httpInterceptorProviders } from "../interceptors/interceptors";
       CoreProvider,
       UserProvider,
       AuthenticationProvider,
-      httpInterceptorProviders
+      httpInterceptorProviders,
+      helperProviders
   ]
 })
 export class AppModule {}

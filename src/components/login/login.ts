@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController, Platform } from "ionic-angular";
+import { NavController, Platform } from "ionic-angular";
 import { UserProvider } from "../../providers/user/user-provider";
 import { TabsPage } from "../../pages/tabs/tabs";
 import { ErrorResponse } from "../../models/ErrorResponse";
+import { ErrorAlertMessageHelper } from "../../helpers/ErrorAlertMessageHelper";
 
 @Component({
   selector: 'login-component',
@@ -16,7 +17,7 @@ export class LoginComponent {
   protected isIos: boolean;
   protected isAndroid: boolean;
 
-  constructor(private navCtrl: NavController, private platform: Platform, private alertCtrl: AlertController, private userProvider: UserProvider) {
+  constructor(private navCtrl: NavController, private platform: Platform, private errorAlert: ErrorAlertMessageHelper, private userProvider: UserProvider) {
       platform.ready().then(() => {
           this.isIos = platform.is('ios');
           this.isAndroid = platform.is('android');
@@ -29,13 +30,7 @@ export class LoginComponent {
               this.navCtrl.push(TabsPage);
           })
           .catch( (e: ErrorResponse) => {
-              let alertErrorMessage = this.alertCtrl.create({
-                  title: 'Ooops!',
-                  subTitle: e.message || 'Something went wrong',
-                  message: e.message ? 'Wrong email or password' : '',
-                  buttons: [ 'Dismiss']
-              });
-              alertErrorMessage.present();
+              this.errorAlert.errorAlertMessageFromErrorResponse(e, null, e.message ? 'Wrong email or password' : '')
           })
   }
 }
