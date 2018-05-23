@@ -13,17 +13,15 @@ export class NoteProvider extends CoreProvider {
   }
 
   addNote(note: Note) {
-    return this.postRequest('/notes/add-note', note, Note);
+    return this.postRequest('/notes/add', note, Note);
   }
 
-  editNote(note: Note): void {
-      let index = this.notes.indexOf(note);
-      this.notes[index] = note;
+  editNote(note: Note) {
+    return this.patchRequest('/notes/edit', note, Note);
   }
 
-  removeNote(note: Note): void {
-    let index = this.notes.indexOf(note);
-    this.notes.splice(index, 1);
+  removeNote(id: string) {
+    return this.deleteRequest(`/notes/delete/${id}`)
   }
 
   getAllNotes() {

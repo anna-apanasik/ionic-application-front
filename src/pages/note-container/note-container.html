@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>Notes</ion-title>
@@ -12,6 +11,7 @@
 
 <ion-content padding>
   <ion-list *ngFor="let note of notes">
-    <view-note [note]="note"></view-note>
+    <view-note [note]="note"
+               (updateNotesEvent)="updateNotes()"></view-note>
   </ion-list>
 </ion-content>

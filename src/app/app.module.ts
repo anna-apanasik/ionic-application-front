@@ -42,6 +42,7 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 import { ComponentsModule } from "../components/components.module";
 import { httpInterceptorProviders } from "../interceptors/interceptors";
 import { helperProviders } from "../helpers/helperProviders";
+import { RefreshProvider } from '../providers/refresh/refresh';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { helperProviders } from "../helpers/helperProviders";
       UserProvider,
       AuthenticationProvider,
       httpInterceptorProviders,
-      helperProviders
+      helperProviders,
+      RefreshProvider
   ]
 })
 export class AppModule {}

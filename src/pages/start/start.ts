@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 
 
 @Component({
@@ -9,10 +9,8 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 export class StartPage {
 
   startSegment: string = "login";
-  isAndroid: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
-      this.isAndroid = platform.is('android');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
 }

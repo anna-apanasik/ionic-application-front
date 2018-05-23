@@ -5,7 +5,7 @@ import { HttpRequest } from "@angular/common/http/src/request";
 import { HttpEvent } from "@angular/common/http/src/response";
 import { Observable } from "rxjs/Observable";
 import { HttpHandler } from "@angular/common/http/src/backend";
-import { NoTokenURL } from "../app/constants";
+import { noTokenURL } from "../app/constants";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -13,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>  {
-        if(this.auth.getToken() && !~request.url.indexOf(NoTokenURL.login) && !~request.url.indexOf(NoTokenURL.register)) {
+        if(this.auth.getToken() && !~request.url.indexOf(noTokenURL.LOGIN_URL) && !~request.url.indexOf(noTokenURL.REGISTER_URL)) {
             request = request.clone({
                 setHeaders: {
                     Authorization : `Bearer ${this.auth.getToken()}`

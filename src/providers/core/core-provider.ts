@@ -1,6 +1,6 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {ErrorResponse} from "../../models/ErrorResponse";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { ErrorResponse } from "../../models/ErrorResponse";
 
 @Injectable()
 export class CoreProvider {
@@ -20,24 +20,45 @@ export class CoreProvider {
                         resolve(responseType ? this._convertResponseToType(res, responseType) : res);
                     },
                     error => {
-                        console.log(error);
                         reject(this._convertBadResponse(error))
                     })
-        })
+        });
     }
 
-    getRequest(url: string, responseType?: any, httpOptions: {} = this.httpOptions) {
+    getRequest(url: string, responseType?: any, httpOptions: {} = this.httpOptions): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.get(`${this.apiRoot}` + url, httpOptions)
                 .subscribe(res => {
-                        console.log(res)
                         resolve(this._convertResponseToType(res, responseType));
                     },
                     error => {
-                        console.log(error);
                         reject(this._convertBadResponse(error))
                     })
-        })
+        });
+    }
+
+    patchRequest(url: string, data: any, responseType?: any, httpOptions: {} = this.httpOptions): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.patch(`${this.apiRoot}` + url, data, httpOptions)
+                .subscribe(res => {
+                        resolve(this._convertResponseToType(res, responseType));
+                    },
+                    error => {
+                        reject(this._convertBadResponse(error))
+                    })
+        });
+    }
+
+    deleteRequest(url: string, httpOptions: {} = this.httpOptions): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.delete(`${this.apiRoot}` + url, httpOptions)
+                .subscribe(res => {
+                        resolve(res);
+                    },
+                    error => {
+                        reject(this._convertBadResponse(error))
+                    })
+        });
     }
 
     private _convertResponseToType(response, type) {

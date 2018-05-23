@@ -3,7 +3,11 @@ export const userConstants = {
     AUTH_USER_HEADER_KEY: 'token',
 };
 
-export const NoTokenURL = {
-    login: '/api/login',
-    register: '/api/users/register'
+export const noTokenURL = {
+    LOGIN_URL: '/api/login',
+    REGISTER_URL: '/api/users/register'
+};
+
+export const pageConstants = {
+    CURRENT_PAGE: 'current_page'
 };

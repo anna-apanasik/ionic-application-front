@@ -15,7 +15,9 @@ export class NoteContainerPage {
 
     protected notes: Note[];
 
-    constructor(private modalCtrl: ModalController, private noteProvider: NoteProvider, private errorAlert: ErrorAlertMessageHelper) {
+    constructor(private modalCtrl: ModalController,
+                private noteProvider: NoteProvider,
+                private errorAlert: ErrorAlertMessageHelper) {
     }
 
     ionViewDidLoad() {
@@ -38,7 +40,7 @@ export class NoteContainerPage {
         });
     }
 
-    updateNotes() {
+    public updateNotes() {
         this.noteProvider.getAllNotes()
             .then((notes: Note[]) => {
                 this.notes = notes.reverse();
